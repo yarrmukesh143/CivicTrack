@@ -42,21 +42,33 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-  `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: cleanEmail,
-            password,
-          }),
-        }
-      );
+     const response = await fetch(
+  "https://civictrack-sac1.onrender.com/api/auth/login",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: cleanEmail,
+      password,
+    }),
+  }
+);
+      const text = await response.text();
 
-      const data = await response.json();
+console.log("LOGIN STATUS:", response.status);
+console.log("LOGIN RESPONSE:", text);
+
+let data;
+
+try {
+  data = JSON.parse(text);
+} catch {
+  throw new Error(
+    `Backend returned non-JSON response: ${text.slice(0, 150)}`
+  );
+}
 
       if (!response.ok) {
         throw new Error(data.message || "Login failed.");
