@@ -43,8 +43,7 @@ export default function IssueDetailsPage() {
         setError("");
 
         const response = await fetch(
-          `http://localhost:5000/api/issues/${id}`
-        );
+`${process.env.NEXT_PUBLIC_API_URL}/api/issues/${id}`        );
 
         const data = await response.json();
 
@@ -81,7 +80,7 @@ export default function IssueDetailsPage() {
       setUpvoting(true);
 
       const response = await fetch(
-        `http://localhost:5000/api/issues/${id}/upvote`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/issues/${id}/upvote`,
         {
           method: "POST",
           headers: {
