@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const MapView = dynamic(() => import("./MapView"), {
+const MapClient = dynamic(() => import("./MapClient"), {
   ssr: false,
 });
 
@@ -62,7 +62,7 @@ export default function MapPage() {
 
         <div className="relative h-[600px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
 
-          <MapView />
+         <MapClient />
 
         </div>
 
