@@ -172,7 +172,7 @@ export default function Navbar() {
               {/* Official Dashboard */}
               {user.role === "official" && (
                 <Link
-                  href="/official"
+                  href="/dashboard"
                   className="rounded-full border border-[#159b91]/30 bg-[#159b91]/10 px-5 py-2.5 text-sm font-medium text-[#65d7cd] transition-all duration-300 hover:border-[#159b91]/60 hover:bg-[#159b91]/20"
                 >
                   Official Dashboard
