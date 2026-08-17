@@ -119,7 +119,7 @@ export default function DashboardPage() {
        */
 
       const response = await fetch(
-        "/api/issues/my",
+        "/api/issues/api",
         {
           method: "GET",
           headers: {

@@ -98,16 +98,44 @@ export default function ReportPage() {
         formData.append("image", image);
       }
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/issues`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
+      const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/issues`;
+
+console.log("CREATE ISSUE URL:", apiUrl);
+
+const response = await fetch(apiUrl, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+  body: formData,
+});
+
+const contentType = response.headers.get("content-type") || "";
+const responseText = await response.text();
+
+console.log("CREATE ISSUE STATUS:", response.status);
+console.log("CREATE ISSUE CONTENT-TYPE:", contentType);
+console.log("CREATE ISSUE RESPONSE:", responseText);
+
+let data: any = null;
+
+if (contentType.includes("application/json")) {
+  try {
+    data = JSON.parse(responseText);
+  } catch {
+    throw new Error("Backend returned invalid JSON.");
+  }
+} else {
+  throw new Error(
+    `Backend returned non-JSON response (${response.status}).`
+  );
+}
+
+if (!response.ok) {
+  throw new Error(
+    data?.message || "Failed to create issue"
+  );
+}
 
       const data = await response.json();
 

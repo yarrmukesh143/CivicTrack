@@ -1,9 +1,0 @@
-POST http://localhost:5000/api/auth/signup
-Content-Type: application/json
-
-{
-  "name": "Muku Test",
-  "email": "mukutest@civictrack.com",
-  "password": "Muku@12345",
-  "role": "citizen"
-}
