@@ -315,25 +315,43 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {user.role === "citizen" && (
-                <Link
-                  href="/report"
-                  onClick={closeMenu}
-                  className="rounded-full bg-[#159b91] px-5 py-3 text-center font-semibold"
-                >
-                  Report Issue
-                </Link>
-              )}
+            {user.role === "citizen" && (
+  <>
+    <Link
+      href="/dashboard"
+      onClick={closeMenu}
+      className="rounded-full border border-[#159b91]/30 bg-[#159b91]/10 px-5 py-3 text-center font-semibold text-[#65d7cd] transition hover:bg-[#159b91]/20"
+    >
+      Dashboard
+    </Link>
 
-              {user.role === "official" && (
-                <Link
-                  href="/official"
-                  onClick={closeMenu}
-                  className="rounded-full bg-[#159b91] px-5 py-3 text-center font-semibold"
-                >
-                  Official Dashboard
-                </Link>
-              )}
+    <Link
+      href="/report"
+      onClick={closeMenu}
+      className="rounded-full bg-[#159b91] px-5 py-3 text-center font-semibold"
+    >
+      Report Issue
+    </Link>
+  </>
+)}
+
+           {user.role === "citizen" && (
+  <>
+    <Link
+      href="/dashboard"
+      className="rounded-full border border-[#159b91]/30 bg-[#159b91]/10 px-5 py-2.5 text-sm font-medium text-[#65d7cd] transition-all duration-300 hover:border-[#159b91]/60 hover:bg-[#159b91]/20"
+    >
+      Dashboard
+    </Link>
+
+    <Link
+      href="/report"
+      className="rounded-full bg-[#159b91] px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#18afa4]"
+    >
+      Report Issue
+    </Link>
+  </>
+)}
 
               <button
                 type="button"
