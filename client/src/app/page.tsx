@@ -451,10 +451,7 @@ export default function Home() {
 
         .hero-grid {
           background-image:
-            linear-gradient(
-              rgba(255, 255, 255, 0.035) 1px,
-              transparent 1px
-            ),
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
             linear-gradient(
               90deg,
               rgba(255, 255, 255, 0.035) 1px,
@@ -594,19 +591,20 @@ export default function Home() {
                 {user?.role === "official" ? (
                   <a
                     href="/official"
-                    className="rounded-full border border-[#159b91]/25 bg-[#159b91]/10 px-5 py-2.5 text-sm font-semibold text-[#65d7cd] transition hover:border-[#159b91]/50 hover:bg-[#159b91]/15"
+                    onClick={() => setMenuOpen(false)}
+                    className="rounded-xl border border-[#159b91]/25 bg-[#159b91]/10 px-5 py-3 text-center text-sm font-semibold text-[#65d7cd]"
                   >
                     Official Dashboard
                   </a>
                 ) : (
                   <a
-                    href="/report"
-                    className="rounded-full bg-[#159b91] px-5 py-2.5 text-sm font-semibold transition hover:bg-[#18afa4]"
+                    href="/dashboard"
+                    onClick={() => setMenuOpen(false)}
+                    className="rounded-xl bg-[#159b91] px-5 py-3 text-center text-sm font-semibold"
                   >
-                    Report Issue
+                    Citizen Dashboard
                   </a>
                 )}
-
                 <button
                   type="button"
                   onClick={handleLogout}
@@ -705,18 +703,16 @@ export default function Home() {
                 {user?.role === "official" ? (
                   <a
                     href="/official"
-                    onClick={() => setMenuOpen(false)}
-                    className="rounded-xl border border-[#159b91]/25 bg-[#159b91]/10 px-5 py-3 text-center text-sm font-semibold text-[#65d7cd]"
+                    className="rounded-full border border-[#159b91]/25 bg-[#159b91]/10 px-5 py-2.5 text-sm font-semibold text-[#65d7cd]"
                   >
                     Official Dashboard
                   </a>
                 ) : (
                   <a
-                    href="/report"
-                    onClick={() => setMenuOpen(false)}
-                    className="rounded-xl bg-[#159b91] px-5 py-3 text-center text-sm font-semibold"
+                    href="/dashboard"
+                    className="rounded-full bg-[#159b91] px-5 py-2.5 text-sm font-semibold transition hover:bg-[#18afa4]"
                   >
-                    Report Issue
+                    Citizen Dashboard
                   </a>
                 )}
 
@@ -761,7 +757,6 @@ export default function Home() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#38d4c8] opacity-50" />
                   <span className="relative h-2 w-2 rounded-full bg-[#38d4c8]" />
                 </span>
-
                 Building better neighborhoods
               </div>
             </Reveal>
@@ -770,29 +765,18 @@ export default function Home() {
               <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-[76px]">
                 Your city.
                 <br />
-
                 <span className="shimmer-text">Your voice.</span>
-
                 <br />
-
-                <span className="text-white/35">
-                  Real change.
-                </span>
+                <span className="text-white/35">Real change.</span>
               </h1>
             </Reveal>
 
             <Reveal delay={160}>
               <p className="mt-7 max-w-xl text-base leading-7 text-white/50 sm:text-lg">
-                CivicTrack gives citizens a direct way to report local
-                problems, discover issues nearby, and follow every report
-                from{" "}
-                <span className="font-medium text-white/80">
-                  reported
-                </span>{" "}
-                to{" "}
-                <span className="font-medium text-[#62ddd3]">
-                  resolved.
-                </span>
+                CivicTrack gives citizens a direct way to report local problems,
+                discover issues nearby, and follow every report from{" "}
+                <span className="font-medium text-white/80">reported</span> to{" "}
+                <span className="font-medium text-[#62ddd3]">resolved.</span>
               </p>
             </Reveal>
 
@@ -802,9 +786,7 @@ export default function Home() {
                   href="/report"
                   className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#159b91] px-7 py-4 font-semibold shadow-[0_15px_50px_rgba(21,155,145,.18)] transition duration-300 hover:-translate-y-1 hover:bg-[#18afa4] hover:shadow-[0_20px_60px_rgba(21,155,145,.3)]"
                 >
-                  <span className="relative z-10">
-                    Report an issue
-                  </span>
+                  <span className="relative z-10">Report an issue</span>
 
                   <span className="relative z-10 text-lg transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -984,10 +966,7 @@ export default function Home() {
                           </p>
                         </div>
 
-                        <StatusBadge
-                          status="Under review"
-                          color="amber"
-                        />
+                        <StatusBadge status="Under review" color="amber" />
                       </div>
 
                       <div className="mt-4 flex items-center gap-2 text-[9px] text-white/30">
@@ -1015,13 +994,9 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <p className="text-xs font-semibold">
-                        Issue resolved
-                      </p>
+                      <p className="text-xs font-semibold">Issue resolved</p>
 
-                      <p className="mt-1 text-[10px] text-white/35">
-                        Just now
-                      </p>
+                      <p className="mt-1 text-[10px] text-white/35">Just now</p>
                     </div>
                   </div>
                 </div>
@@ -1086,14 +1061,9 @@ export default function Home() {
 
                   <span className="text-white/25">·</span>
 
-                  <span className="text-white/35">
-                    {issue.meta}
-                  </span>
+                  <span className="text-white/35">{issue.meta}</span>
 
-                  <StatusBadge
-                    status={issue.status}
-                    color={issue.color}
-                  />
+                  <StatusBadge status={issue.status} color={issue.color} />
                 </div>
               ))}
             </div>
@@ -1122,9 +1092,8 @@ export default function Home() {
                 </h2>
 
                 <p className="mt-5 max-w-xl text-sm leading-7 text-white/40 sm:text-base">
-                  CivicTrack removes the noise between spotting a civic
-                  problem and getting it in front of the people who can
-                  solve it.
+                  CivicTrack removes the noise between spotting a civic problem
+                  and getting it in front of the people who can solve it.
                 </p>
               </div>
 
@@ -1211,9 +1180,9 @@ export default function Home() {
                 </h2>
 
                 <p className="mt-5 max-w-lg text-sm leading-7 text-white/40 sm:text-base">
-                  No more sending a complaint into the void. Every report
-                  has a visible journey — from the first submission to the
-                  final resolution.
+                  No more sending a complaint into the void. Every report has a
+                  visible journey — from the first submission to the final
+                  resolution.
                 </p>
 
                 <a
@@ -1242,10 +1211,7 @@ export default function Home() {
                       </h3>
                     </div>
 
-                    <StatusBadge
-                      status="Under review"
-                      color="amber"
-                    />
+                    <StatusBadge status="Under review" color="amber" />
                   </div>
 
                   <div className="mt-8">
@@ -1291,9 +1257,7 @@ export default function Home() {
                           <div className="flex items-center justify-between gap-3">
                             <p
                               className={`text-sm font-semibold ${
-                                step.active
-                                  ? "text-white"
-                                  : "text-white/35"
+                                step.active ? "text-white" : "text-white/35"
                               }`}
                             >
                               {step.title}
@@ -1353,9 +1317,7 @@ export default function Home() {
                 href={isLoggedIn ? "/report" : "/signup"}
                 className="group/btn inline-flex w-fit items-center gap-3 rounded-full bg-white px-7 py-3.5 font-semibold text-[#09201d] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(255,255,255,.12)]"
               >
-                {isLoggedIn
-                  ? "Report an Issue"
-                  : "Join CivicTrack"}
+                {isLoggedIn ? "Report an Issue" : "Join CivicTrack"}
 
                 <span className="transition-transform duration-300 group-hover/btn:translate-x-1">
                   →
@@ -1384,8 +1346,8 @@ export default function Home() {
                 </h2>
 
                 <p className="mt-5 max-w-md text-sm leading-7 text-white/40 sm:text-base">
-                  Have a question, urgent civic problem, or need help with
-                  a report? Reach out to the CivicTrack team.
+                  Have a question, urgent civic problem, or need help with a
+                  report? Reach out to the CivicTrack team.
                 </p>
 
                 <div className="mt-9 space-y-3">
@@ -1493,9 +1455,7 @@ export default function Home() {
                     onSubmit={(e) => {
                       e.preventDefault();
 
-                      alert(
-                        "Contact API next step mein connect karenge."
-                      );
+                      alert("Contact API next step mein connect karenge.");
                     }}
                   >
                     <div className="grid gap-5 sm:grid-cols-2">
@@ -1552,21 +1512,13 @@ export default function Home() {
                           Select a topic
                         </option>
 
-                        <option value="issue">
-                          Issue Report
-                        </option>
+                        <option value="issue">Issue Report</option>
 
-                        <option value="technical">
-                          Technical Problem
-                        </option>
+                        <option value="technical">Technical Problem</option>
 
-                        <option value="feedback">
-                          Feedback
-                        </option>
+                        <option value="feedback">Feedback</option>
 
-                        <option value="other">
-                          Other
-                        </option>
+                        <option value="other">Other</option>
                       </select>
                     </div>
 
@@ -1592,7 +1544,6 @@ export default function Home() {
                       className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#159b91] px-5 py-3.5 text-sm font-semibold transition hover:-translate-y-0.5 hover:bg-[#18afa4] hover:shadow-[0_10px_35px_rgba(21,155,145,.2)]"
                     >
                       Send Message
-
                       <span className="transition-transform duration-300 group-hover:translate-x-1">
                         →
                       </span>
@@ -1622,8 +1573,7 @@ export default function Home() {
               />
 
               <p className="mt-4 text-sm leading-6 text-white/30">
-                Making civic problems visible, trackable and easier to
-                resolve.
+                Making civic problems visible, trackable and easier to resolve.
               </p>
 
               <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#159b91]/15 bg-[#159b91]/5 px-3 py-1.5 text-[10px] text-[#55d5ca]">
@@ -1634,36 +1584,22 @@ export default function Home() {
 
             {/* LINKS */}
             <div>
-              <h4 className="text-sm font-semibold">
-                CivicTrack
-              </h4>
+              <h4 className="text-sm font-semibold">CivicTrack</h4>
 
               <div className="mt-4 flex flex-col gap-3 text-sm text-white/35">
-                <a
-                  href="/"
-                  className="transition hover:text-white"
-                >
+                <a href="/" className="transition hover:text-white">
                   Home
                 </a>
 
-                <a
-                  href="#how"
-                  className="transition hover:text-white"
-                >
+                <a href="#how" className="transition hover:text-white">
                   How it works
                 </a>
 
-                <a
-                  href="/report"
-                  className="transition hover:text-white"
-                >
+                <a href="/report" className="transition hover:text-white">
                   Report Issue
                 </a>
 
-                <a
-                  href="/login"
-                  className="transition hover:text-white"
-                >
+                <a href="/login" className="transition hover:text-white">
                   Login
                 </a>
               </div>
@@ -1671,9 +1607,7 @@ export default function Home() {
 
             {/* SOCIAL */}
             <div>
-              <h4 className="text-sm font-semibold">
-                Follow us
-              </h4>
+              <h4 className="text-sm font-semibold">Follow us</h4>
 
               <div className="mt-4 flex gap-2">
                 {[
@@ -1699,12 +1633,9 @@ export default function Home() {
             <p>© 2026 CivicTrack. All rights reserved.</p>
 
             <p>
-              Made with{" "}
-              <span className="text-red-400">♥</span>{" "}
-              by{" "}
+              Made with <span className="text-red-400">♥</span> by{" "}
               <span className="font-medium text-white/55">
-                Mukesh{" "}
-                <span className="text-red-400">♥</span>
+                Mukesh <span className="text-red-400">♥</span>
               </span>
             </p>
           </div>
